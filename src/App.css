@@ -1,0 +1,544 @@
+/* App.css */
+
+/* =================================== */
+/* 1. 공통 및 페이지 컨테이너 스타일 */
+/* =================================== */
+
+/* 대부분의 페이지에서 사용하는 중앙 정렬 컨테이너 */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
+  padding-top: 60px; /* 상단 여백 추가 */
+  box-sizing: border-box;
+}
+
+/* 홈 화면 전용 전체 화면 컨테이너 (여백 없음) */
+.home-container {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 질문 페이지 컨테이너 */
+.quiz-page-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  padding-top: 60px; 
+  box-sizing: border-box;
+}
+
+/* 마이페이지 컨테이너 */
+.mypage-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f8f9fa;
+  padding-top: 60px; /* 상단 여백 추가 */
+  box-sizing: border-box;
+  position: static;
+  flex-shrink: 0;
+}
+
+/* 찜 목록 페이지 컨테이너 */
+.wishlist-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f8f9fa;
+  padding-top: 60px; /* 상단 여백 추가 */
+  box-sizing: border-box;
+  position: static;
+  flex-shrink: 0;
+}
+
+/* AI 추천 페이지 컨테이너 */
+.recommendation-container {
+  position: static;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f8f9fa;
+  padding-top: 60px; /* 상단 여백 추가 */
+  box-sizing: border-box;
+  flex-shrink: 0;
+  display: flex;
+}
+
+
+/* =================================== */
+/* 2. 로그인/회원가입 관련 스타일 */
+/* =================================== */
+.welcome-text { font-size: 1.5rem; margin-bottom: 20px; font-weight: bold; }
+.kakao-button { width: 100%; max-width: 320px; padding: 15px; background-color: #FEE500; color: #191919; border: none; border-radius: 12px; font-size: 1rem; font-weight: bold; cursor: pointer; }
+.separator { display: flex; align-items: center; text-align: center; color: #aaa; width: 100%; max-width: 320px; margin: 25px 0; }
+.separator .line { flex-grow: 1; border-bottom: 1px solid #ccc; }
+.separator span { padding: 0 10px; }
+.signup-link { color: #555; text-decoration: underline; cursor: pointer; }
+.name { font-size: 3.5rem; margin: 20px 0; }
+.login-form { display: flex; flex-direction: column; width: 100%; max-width: 320px; }
+.form-group { display: flex; flex-direction: column; text-align: left; margin-bottom: 15px; }
+.form-group label { margin-bottom: 5px; font-size: 0.9rem; color: #555; }
+.form-group input { padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; }
+.login-button { padding: 12px; border: none; border-radius: 4px; background-color: #333; color: white; font-size: 1rem; cursor: pointer; margin-top: 10px; }
+.login-button:hover { background-color: #555; }
+
+/* =================================== */
+/* 3. 모의 테스트 관련 스타일 */
+/* =================================== */
+.quiz-nav { display: flex; align-items: center; width: 100%; padding: 15px 10px; box-sizing: border-box; }
+.back-button { background: none; border: none; font-size: 2.5rem; font-weight: bold; color: #ccc; cursor: pointer; padding: 0 15px; }
+.progress-bar-container { flex-grow: 1; height: 10px; background-color: #eee; border-radius: 5px; margin: 0 15px; overflow: hidden; }
+.progress-bar { height: 100%; background-color: #A9A9A9; border-radius: 5px; transition: width 0.3s ease-in-out; }
+.quiz-content { flex-grow: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 20px 20px 20px; box-sizing: border-box; width: 100%; }
+.test-title { font-size: 2.5rem; margin-bottom: 40px; line-height: 1.3; font-weight: bold; }
+.answer-options { width: 100%; max-width: 360px; margin-bottom: 20px; }
+.answer-button { width: 100%; display: block; padding: 15px; margin-bottom: 10px; background-color: white; border: 1px solid #ccc; border-radius: 12px; text-align: left; font-size: 1rem; cursor: pointer; }
+.answer-button.selected { border-color: #333; border-width: 2px; font-weight: bold; }
+.slider-container { width: 100%; max-width: 360px; text-align: center; margin-bottom: 20px; padding: 20px 0; }
+.slider-value-display { font-size: 1.8rem; font-weight: bold; margin-bottom: 25px; color: #333; }
+.range-slider-wrapper { position: relative; width: 100%; height: 30px; display: flex; align-items: center; }
+.thumb { -webkit-appearance: none; -moz-appearance: none; appearance: none; width: 100%; height: 8px; background: transparent; pointer-events: none; position: absolute; left: 0; outline: none; }
+.thumb::-webkit-slider-thumb { -webkit-appearance: none; -moz-appearance: none; appearance: none; pointer-events: all; width: 28px; height: 28px; background: white; border-radius: 50%; border: 2px solid #A9A9A9; box-shadow: 0 1px 3px rgba(0,0,0,0.2); cursor: pointer; }
+.slider-track-container { position: relative; width: 100%; }
+.slider-track { position: absolute; height: 8px; border-radius: 5px; background: #e9e9e9; width: 100%; z-index: 1; }
+.slider-range { position: absolute; height: 8px; border-radius: 5px; background: #A9A9A9; z-index: 2; }
+.slider-labels { display: flex; justify-content: space-between; margin-top: 10px; font-size: 0.9rem; color: #888; }
+.test-button { width: 100%; max-width: 320px; padding: 15px; border: none; border-radius: 12px; font-size: 1rem; font-weight: bold; cursor: pointer; margin-bottom: 15px; }
+.test-button.primary { background-color: #A9A9A9; color: white; }
+.test-button.secondary { background-color: #EAEAEA; color: #333; }
+
+/* =================================== */
+/* 4. 홈 화면(지도) 관련 스타일 */
+/* =================================== */
+.search-bar { position: absolute; top: 70px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 400px; display: flex; align-items: center; padding: 18px 15px; background-color: white; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); z-index: 20; }
+.search-bar input { border: none; outline: none; margin-left: 11px; font-size: 1.3rem; width: 100%; }
+.map-container { width: 100%; height: 100%; position: relative; overflow: hidden; }
+.map-background { width: 100%; height: 100%; object-fit: cover; }
+.current-location-marker, .home-marker, .marker-wrapper, .radius-circle { position: absolute; transform: translate(-50%, -50%); }
+.current-location-marker { width: 18px; height: 18px; background-color: red; border-radius: 50%; border: 2px solid white; z-index: 5; }
+.home-marker { z-index: 5; }
+.marker-wrapper { z-index: 10; cursor: pointer; }
+.radius-circle { background-color: rgba(255, 99, 71, 0.2); border-radius: 50%; z-index: 3; }
+.facility-marker-img { width: 60px; height: auto; filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }
+.bottom-nav { position: absolute; bottom: 0; left: 0; width: 100%; height: 100px; display: flex; justify-content: space-around; align-items: center; background-color: white; border-top: 1px solid #eee; z-index: 20; flex-shrink: 0; }
+.nav-item { display: flex; flex-direction: column; align-items: center; background: none; border: none; cursor: pointer; font-size: 1.1rem; color: #888; }
+.nav-item.active { color: #333; }
+.nav-item.active svg { color: #007bff; }
+
+/* =================================== */
+/* 5. 바텀 시트(Bottom Sheet) 스타일 */
+/* =================================== */
+.bottom-sheet-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 100; }
+.bottom-sheet-container { position: fixed; bottom: 0; left: 0; width: 100%; height: 50%; max-height: 90%; background-color: white; border-top-left-radius: 20px; border-top-right-radius: 20px; box-shadow: 0 -4px 12px rgba(0,0,0,0.1); z-index: 101; transition: height 0.3s ease-in-out; display: flex; flex-direction: column; }
+.bottom-sheet-container.expanded { height: 90%; }
+.handle-bar { width: 40px; height: 5px; background-color: #ccc; border-radius: 2.5px; margin: 10px auto; flex-shrink: 0; }
+.sheet-header { padding: 0 20px 20px 20px; border-bottom: 1px solid #eee; flex-shrink: 0; }
+.sheet-scrollable-content { overflow-y: auto; flex-grow: 1; }
+.sheet-content { padding: 20px; }
+.facility-type { font-size: 0.9rem; color: #888; margin: 0; }
+.facility-name { font-size: 1.8rem; font-weight: bold; margin: 5px 0; }
+.facility-address, .facility-distance { font-size: 1rem; color: #555; margin: 5px 0; }
+.action-buttons { display: flex; gap: 10px; margin: 20px 0; }
+.action-buttons button { flex-grow: 1; padding: 10px; background-color: #f0f0f0; border: none; border-radius: 8px; font-size: 1rem; }
+.facility-tags { display: flex; gap: 10px; flex-wrap: wrap; }
+.facility-tags span { background-color: #f0f0f0; padding: 5px 10px; border-radius: 15px; font-size: 0.9rem; }
+.photo-gallery { display: flex; gap: 10px; margin-bottom: 20px; }
+.photo-placeholder { width: 120px; height: 120px; background-color: #eee; border-radius: 8px; }
+.detail-section { margin-bottom: 20px; }
+.detail-section h3 { margin: 0 0 10px 0; }
+.more-button { width: 100%; padding: 10px; background-color: #f0f0f0; border: none; border-radius: 8px; }
+.info-box { background-color: #f8f9fa; border-radius: 8px; padding: 15px; }
+.info-box p { margin: 5px 0; }
+
+/* =================================== */
+/* 6. 마이페이지, 찜목록, 추천 스타일 */
+/* =================================== */
+.mypage-content, .wishlist-content, .recommendation-content { flex-grow: 1; overflow-y: auto; padding: 20px; min-height: 0;}
+.profile-section { display: flex; align-items: center; margin-bottom: 30px; }
+.profile-icon-placeholder { width: 50px; height: 50px; background-color: #e9ecef; border-radius: 8px; margin-right: 15px; }
+.profile-name { font-size: 1.25rem; font-weight: bold; }
+.info-section { background-color: white; padding: 20px; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+.address-item { padding-bottom: 15px; margin-bottom: 15px; border-bottom: 1px solid #f1f3f5; }
+.address-item:last-child { border-bottom: none; margin-bottom: 0; }
+.address-label { font-weight: bold; font-size: 0.9rem; margin: 0 0 5px 0; }
+.address-text { font-size: 1rem; color: #495057; line-height: 1.5; margin: 0; }
+.mypage-button { width: 100%; padding: 15px; background-color: #e9ecef; border: none; border-radius: 8px; font-size: 1rem; font-weight: 500; color: #495057; cursor: pointer; margin-top: 10px; }
+.section-title { font-size: 1.1rem; font-weight: bold; margin: 0 0 15px 0; }
+.grade-display { width: 100%; padding: 20px; background-color: #e9ecef; border-radius: 8px; font-size: 1.2rem; font-weight: bold; text-align: center; margin-bottom: 10px; box-sizing: border-box; }
+.account-action-button { background: none; border: none; padding: 10px 0; font-size: 1rem; color: #868e96; text-align: left; width: 100%; cursor: pointer; }
+.wishlist-title { padding: 20px; font-size: 1.5rem; margin: 0; }
+.empty-wishlist-text { text-align: center; color: #888; margin-top: 40px; }
+.wishlist-item { display: flex; background-color: white; border-radius: 12px; padding: 15px; margin-bottom: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+.wishlist-item-photo { width: 100px; height: 100px; background-color: #eee; border-radius: 8px; flex-shrink: 0; margin-right: 15px; }
+.wishlist-item-info { display: flex; flex-direction: column; }
+.wishlist-item-name { font-size: 1.2rem; font-weight: bold; margin: 0 0 5px 0; }
+.wishlist-item-address, .wishlist-item-distance { font-size: 0.9rem; color: #555; margin: 2px 0; }
+.wishlist-item-tags { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 5px; }
+.wishlist-item-tags span { background-color: #f0f0f0; padding: 3px 8px; border-radius: 10px; font-size: 0.8rem; }
+.recommendation-title { font-size: 1.5rem; font-weight: bold; margin: 20px 0 30px 0; }
+.recommendation-card { background-color: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); overflow: hidden; }
+.recommendation-photo { width: 100%; height: 150px; background-color: #e9ecef; border: 4px solid #a9def9; box-sizing: border-box; }
+.recommendation-info { padding: 20px; }
+.recommendation-info h2 { font-size: 1.5rem; margin: 0 0 10px 0; }
+.recommendation-info p { font-size: 1rem; color: #555; margin: 4px 0; }
+.re-recommend-section { margin-top: 40px; display: flex; justify-content: space-between; align-items: flex-end; }
+.re-recommend-button { padding: 12px 20px; border: none; border-radius: 20px; background-color: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); font-size: 1rem; font-weight: bold; cursor: pointer; position: relative; margin-bottom: 20px; }
+.re-recommend-button::after { content: ''; position: absolute; bottom: -8px; left: 30px; border-width: 8px 8px 0 8px; border-style: solid; border-color: white transparent transparent transparent; }
+.re-recommend-cat { width: 120px; height: auto; }
+.re-recommend-text-group {
+  display: flex;
+  flex-direction: column; /* 텍스트와 버튼을 세로로 배치 */
+  align-items: flex-start; /* 왼쪽 정렬 */
+}
+
+.re-recommend-text-group p {
+  margin: 0 0 5px 15px; /* 텍스트 위치 조절 */
+  font-size: 0.9rem;
+  color: #555;
+}
+
+
+/* --- 길찾기 페이지 스타일 --- */
+.directions-container {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.directions-back-button {
+  position: absolute;
+  top: 60px;
+  left: 10px;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.map-background-blurry {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.map-background-blurry img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(5px); /* 배경을 흐리게 처리 */
+}
+
+.directions-ui-wrapper {
+  position: absolute;
+  top: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 400px;
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.transport-options {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.transport-button {
+  flex-grow: 1;
+  padding: 10px;
+  border: none;
+  background: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.transport-button.active {
+  font-weight: bold;
+  border-bottom: 2px solid #007bff;
+  color: #007bff;
+}
+
+.route-inputs {
+  position: relative;
+  border: 1px solid #007bff;
+  border-radius: 8px;
+}
+
+.route-inputs input {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.route-inputs input:first-child {
+  border-bottom: 1px solid #eee;
+}
+
+.swap-button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.route-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.route-button {
+  flex-grow: 1;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.route-button.primary {
+  background-color: #007bff;
+  color: white;
+  border: none;
+}
+
+.route-button.secondary {
+  background-color: white;
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+/* --- 길찾기 출발지 드롭다운 스타일 --- */
+.start-point-selector {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  font-size: 1rem;
+  box-sizing: border-box;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.start-point-dropdown {
+  position: absolute;
+  top: 52px; /* 출발지 선택창 바로 아래 */
+  left: 0;
+  width: 100%;
+  background-color: white;
+  border: 1px solid #eee;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  z-index: 10;
+}
+
+.start-point-dropdown div {
+  padding: 15px;
+  cursor: pointer;
+}
+
+.start-point-dropdown div:hover {
+  background-color: #f8f9fa;
+}
+
+/* --- 전화 팝업 모달 스타일 --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 200; /* 바텀시트(101)보다 위에 오도록 설정 */
+}
+
+.modal-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  width: 80%;
+  max-width: 300px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.modal-phone-number {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0 0 20px 0;
+  color: #333;
+}
+
+.modal-button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.modal-button.primary {
+  background-color: #007bff;
+  color: white;
+  border: none;
+}
+
+.modal-button.secondary {
+  background-color: #f0f0f0;
+  color: #333;
+  border: none;
+}
+
+.modal-close-button {
+  background: none;
+  border: none;
+  color: #888;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.mypage-container .bottom-nav,
+.wishlist-container .bottom-nav,
+.recommendation-container .bottom-nav {
+  position: static;
+  flex-shrink: 0;
+}
+
+/* --- 시설 상세 페이지 스타일 (수정) --- */
+.details-page-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+.details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  flex-shrink: 0;
+  padding-top: 60px; /* 상단 상태바 여백 */
+}
+
+.details-header h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+/* 스크롤될 전체 콘텐츠 영역 */
+.details-content {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+/* 상단 정보와 나머지 정보를 구분하는 섹션 */
+.facility-info-section {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
+}
+
+/* --- 기존 후기(review-box) 스타일 추가 --- */
+.review-box {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+.review-author { margin: 0 0 5px 0; }
+.review-text { margin: 0 0 10px 0; color: #555; }
+.review-date { margin: 0; font-size: 0.8rem; color: #999; text-align: right; }
+
+/* --- 주소 항목 레이아웃 수정 --- */
+.address-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.address-item-content {
+  flex-grow: 1;
+}
+
+.delete-address-button {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: #adb5bd;
+  cursor: pointer;
+  padding: 0 10px;
+  line-height: 1;
+  margin-left: 15px;
+}
+
+.delete-address-button:hover {
+  color: #343a40;
+}
+
+/* --- 확인 팝업 모달 스타일 --- */
+.modal-content.confirm-modal {
+  padding: 30px 20px 20px 20px;
+}
+
+.modal-message {
+  font-size: 1.2rem;
+  margin: 0 0 25px 0;
+  color: #333;
+}
+
+.modal-button-group {
+  display: flex;
+  gap: 10px;
+}
+
+/* =================================== */
+/* 7. 반응형 스타일 */
+/* =================================== */
+@media (max-width: 480px) {
+  .name { font-size: 2.5rem; }
+  .profile-image { width: 180px; }
+  .test-title { font-size: 2rem; } 
+}
