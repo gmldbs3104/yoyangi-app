@@ -7,39 +7,59 @@ const initialAddresses = [
   { id: 2, label: '회사', text: '서울 강남구 테헤란로 152 (역삼동)\n강남파이낸스센터' },
 ];
 
-const useAppStore = create((set) => ({
-  // --- 찜 목록 상태 ---
+/** 찜(Wishlist) 관련 상태와 액션을 관리하는 슬라이스 */
+const createWishlistSlice = (set, get) => ({
   wishlist: [],
-  addToWishlist: (facility) => set((state) => {
-    const isExist = state.wishlist.some(item => item.id === facility.id);
+  addToWishlist: (facility) => {
+    const isExist = get().wishlist.some(item => item.id === facility.id);
     if (isExist) {
-      alert('이미 찜한 시설입니다.');
-      return state;
+      return false; 
     }
-    alert(`${facility.name}을(를) 찜 목록에 추가했습니다.`);
-    return { wishlist: [...state.wishlist, facility] };
-  }),
-  removeFromWishlist: (facilityId) => set((state) => ({
-    wishlist: state.wishlist.filter(item => item.id !== facilityId),
-  })),
+    set((state) => ({ wishlist: [...state.wishlist, facility] }));
+    return true; 
+  },
+  removeFromWishlist: (facilityId) => {
+    set((state) => ({
+      wishlist: state.wishlist.filter(item => item.id !== facilityId),
+    }));
+  },
+});
 
-  // --- 사용자 등급 상태 ---
+/** 사용자 정보(User) 관련 상태와 액션을 관리하는 슬라이스 */
+const createUserSlice = (set) => ({
+  userName: '회원명',
   userGrade: '미설정',
+  setUserName: (name) => set({ userName: name }), // 쉼표 추가된 부분
   setUserGrade: (grade) => set({ userGrade: `${grade}등급` }),
+});
 
-  // --- 주소 목록 상태 추가 ---
+/** 주소(Address) 관련 상태와 액션을 관리하는 슬라이스 */
+const createAddressSlice = (set) => ({
   addresses: initialAddresses,
-  addAddress: (address) => set((state) => ({
-    addresses: [...state.addresses, { id: Date.now(), ...address }]
-  })),
-  updateAddress: (updatedAddress) => set((state) => ({
-    addresses: state.addresses.map(addr => 
-      addr.id === updatedAddress.id ? { ...addr, ...updatedAddress } : addr
-    )
-  })),
-  removeAddress: (addressId) => set((state) => ({
-    addresses: state.addresses.filter(addr => addr.id !== addressId)
-  })),
+  addAddress: (address) => {
+    set((state) => ({
+      addresses: [...state.addresses, { id: Date.now(), ...address }],
+    }));
+  },
+  updateAddress: (updatedAddress) => {
+    set((state) => ({
+      addresses: state.addresses.map(addr =>
+        addr.id === updatedAddress.id ? { ...addr, ...updatedAddress } : addr
+      ),
+    }));
+  },
+  removeAddress: (addressId) => {
+    set((state) => ({
+      addresses: state.addresses.filter(addr => addr.id !== addressId),
+    }));
+  },
+});
+
+// 각각의 슬라이스를 하나로 합쳐서 스토어를 생성
+const useAppStore = create((set, get) => ({
+  ...createWishlistSlice(set, get),
+  ...createUserSlice(set, get),
+  ...createAddressSlice(set, get),
 }));
 
 export default useAppStore;

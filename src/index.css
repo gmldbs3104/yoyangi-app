@@ -7,6 +7,10 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 16px;
+}
+
 /* body 태그의 기본 바깥 여백을 완전히 제거합니다. */
 body {
   margin: 0;

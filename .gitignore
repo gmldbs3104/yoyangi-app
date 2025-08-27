@@ -25,3 +25,5 @@ dist-ssr
 
 # 한글파일 무시
 *.hwp
+
+*.env

@@ -85,10 +85,25 @@
 .name { font-size: 3.5rem; margin: 20px 0; }
 .login-form { display: flex; flex-direction: column; width: 100%; max-width: 320px; }
 .form-group { display: flex; flex-direction: column; text-align: left; margin-bottom: 15px; }
-.form-group label { margin-bottom: 5px; font-size: 0.9rem; color: #555; }
+.form-group label { margin-bottom: 5px; font-size: 1rem; color: #555; }
 .form-group input { padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; }
-.login-button { padding: 12px; border: none; border-radius: 4px; background-color: #333; color: white; font-size: 1rem; cursor: pointer; margin-top: 10px; }
+.login-button { padding: 12px; border: none; border-radius: 4px; background-color: #D35400; color: white; font-size: 1rem; cursor: pointer; margin-top: 10px; }
 .login-button:hover { background-color: #555; }
+
+.secondary-action-link {
+  background: none;
+  border: none;
+  color: #555;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 20px;
+  padding: 5px;
+}
+
+.secondary-action-link:hover {
+  color: #000;
+}
 
 /* =================================== */
 /* 3. 모의 테스트 관련 스타일 */
@@ -96,12 +111,12 @@
 .quiz-nav { display: flex; align-items: center; width: 100%; padding: 15px 10px; box-sizing: border-box; }
 .back-button { background: none; border: none; font-size: 2.5rem; font-weight: bold; color: #ccc; cursor: pointer; padding: 0 15px; }
 .progress-bar-container { flex-grow: 1; height: 10px; background-color: #eee; border-radius: 5px; margin: 0 15px; overflow: hidden; }
-.progress-bar { height: 100%; background-color: #A9A9A9; border-radius: 5px; transition: width 0.3s ease-in-out; }
+.progress-bar { height: 100%; background-color: #D35400; border-radius: 5px; transition: width 0.3s ease-in-out; }
 .quiz-content { flex-grow: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 20px 20px 20px; box-sizing: border-box; width: 100%; }
 .test-title { font-size: 2.5rem; margin-bottom: 40px; line-height: 1.3; font-weight: bold; }
 .answer-options { width: 100%; max-width: 360px; margin-bottom: 20px; }
 .answer-button { width: 100%; display: block; padding: 15px; margin-bottom: 10px; background-color: white; border: 1px solid #ccc; border-radius: 12px; text-align: left; font-size: 1rem; cursor: pointer; }
-.answer-button.selected { border-color: #333; border-width: 2px; font-weight: bold; }
+.answer-button.selected { background-color: #EAEAEA; border-width: 2px; font-weight: bold; }
 .slider-container { width: 100%; max-width: 360px; text-align: center; margin-bottom: 20px; padding: 20px 0; }
 .slider-value-display { font-size: 1.8rem; font-weight: bold; margin-bottom: 25px; color: #333; }
 .range-slider-wrapper { position: relative; width: 100%; height: 30px; display: flex; align-items: center; }
@@ -110,9 +125,9 @@
 .slider-track-container { position: relative; width: 100%; }
 .slider-track { position: absolute; height: 8px; border-radius: 5px; background: #e9e9e9; width: 100%; z-index: 1; }
 .slider-range { position: absolute; height: 8px; border-radius: 5px; background: #A9A9A9; z-index: 2; }
-.slider-labels { display: flex; justify-content: space-between; margin-top: 10px; font-size: 0.9rem; color: #888; }
+.slider-labels { display: flex; justify-content: space-between; margin-top: 10px; font-size: 1rem; color: #888; }
 .test-button { width: 100%; max-width: 320px; padding: 15px; border: none; border-radius: 12px; font-size: 1rem; font-weight: bold; cursor: pointer; margin-bottom: 15px; }
-.test-button.primary { background-color: #A9A9A9; color: white; }
+.test-button.primary { background-color: #D35400; color: white; }
 .test-button.secondary { background-color: #EAEAEA; color: #333; }
 
 /* =================================== */
@@ -131,7 +146,7 @@
 .bottom-nav { position: absolute; bottom: 0; left: 0; width: 100%; height: 100px; display: flex; justify-content: space-around; align-items: center; background-color: white; border-top: 1px solid #eee; z-index: 20; flex-shrink: 0; }
 .nav-item { display: flex; flex-direction: column; align-items: center; background: none; border: none; cursor: pointer; font-size: 1.1rem; color: #888; }
 .nav-item.active { color: #333; }
-.nav-item.active svg { color: #007bff; }
+.nav-item.active svg { color: #D35400; }
 
 /* =================================== */
 /* 5. 바텀 시트(Bottom Sheet) 스타일 */
@@ -143,19 +158,19 @@
 .sheet-header { padding: 0 20px 20px 20px; border-bottom: 1px solid #eee; flex-shrink: 0; }
 .sheet-scrollable-content { overflow-y: auto; flex-grow: 1; }
 .sheet-content { padding: 20px; }
-.facility-type { font-size: 0.9rem; color: #888; margin: 0; }
+.facility-type { font-size: 1rem; color: #888; margin: 0; }
 .facility-name { font-size: 1.8rem; font-weight: bold; margin: 5px 0; }
 .facility-address, .facility-distance { font-size: 1rem; color: #555; margin: 5px 0; }
 .action-buttons { display: flex; gap: 10px; margin: 20px 0; }
 .action-buttons button { flex-grow: 1; padding: 10px; background-color: #f0f0f0; border: none; border-radius: 8px; font-size: 1rem; }
 .facility-tags { display: flex; gap: 10px; flex-wrap: wrap; }
-.facility-tags span { background-color: #f0f0f0; padding: 5px 10px; border-radius: 15px; font-size: 0.9rem; }
+.facility-tags span { background-color: #ffe1ba; padding: 5px 10px; border-radius: 15px; font-size: 1rem; }
 .photo-gallery { display: flex; gap: 10px; margin-bottom: 20px; }
 .photo-placeholder { width: 120px; height: 120px; background-color: #eee; border-radius: 8px; }
 .detail-section { margin-bottom: 20px; }
 .detail-section h3 { margin: 0 0 10px 0; }
 .more-button { width: 100%; padding: 10px; background-color: #f0f0f0; border: none; border-radius: 8px; }
-.info-box { background-color: #f8f9fa; border-radius: 8px; padding: 15px; }
+.info-box { background-color: #FFFFFF; border: 2px solid #D35400; border-radius: 8px; padding: 15px; }
 .info-box p { margin: 5px 0; }
 
 /* =================================== */
@@ -168,11 +183,11 @@
 .info-section { background-color: white; padding: 20px; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
 .address-item { padding-bottom: 15px; margin-bottom: 15px; border-bottom: 1px solid #f1f3f5; }
 .address-item:last-child { border-bottom: none; margin-bottom: 0; }
-.address-label { font-weight: bold; font-size: 0.9rem; margin: 0 0 5px 0; }
+.address-label { font-weight: bold; font-size: 1rem; margin: 0 0 5px 0; }
 .address-text { font-size: 1rem; color: #495057; line-height: 1.5; margin: 0; }
-.mypage-button { width: 100%; padding: 15px; background-color: #e9ecef; border: none; border-radius: 8px; font-size: 1rem; font-weight: 500; color: #495057; cursor: pointer; margin-top: 10px; }
+.mypage-button { width: 100%; padding: 15px; background-color: #D35400; border: none; border-radius: 8px; font-size: 1rem; font-weight: 500; color: white; cursor: pointer; margin-top: 10px; }
 .section-title { font-size: 1.1rem; font-weight: bold; margin: 0 0 15px 0; }
-.grade-display { width: 100%; padding: 20px; background-color: #e9ecef; border-radius: 8px; font-size: 1.2rem; font-weight: bold; text-align: center; margin-bottom: 10px; box-sizing: border-box; }
+.grade-display { width: 100%; padding: 20px; background-color: #ffe1ba; border-radius: 8px; font-size: 1.2rem; font-weight: bold; text-align: center; margin-bottom: 10px; box-sizing: border-box; }
 .account-action-button { background: none; border: none; padding: 10px 0; font-size: 1rem; color: #868e96; text-align: left; width: 100%; cursor: pointer; }
 .wishlist-title { padding: 20px; font-size: 1.5rem; margin: 0; }
 .empty-wishlist-text { text-align: center; color: #888; margin-top: 40px; }
@@ -180,9 +195,9 @@
 .wishlist-item-photo { width: 100px; height: 100px; background-color: #eee; border-radius: 8px; flex-shrink: 0; margin-right: 15px; }
 .wishlist-item-info { display: flex; flex-direction: column; }
 .wishlist-item-name { font-size: 1.2rem; font-weight: bold; margin: 0 0 5px 0; }
-.wishlist-item-address, .wishlist-item-distance { font-size: 0.9rem; color: #555; margin: 2px 0; }
+.wishlist-item-address, .wishlist-item-distance { font-size: 1rem; color: #555; margin: 2px 0; }
 .wishlist-item-tags { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 5px; }
-.wishlist-item-tags span { background-color: #f0f0f0; padding: 3px 8px; border-radius: 10px; font-size: 0.8rem; }
+.wishlist-item-tags span { background-color: #f0f0f0; padding: 3px 8px; border-radius: 10px; font-size: 1rem; }
 .recommendation-title { font-size: 1.5rem; font-weight: bold; margin: 20px 0 30px 0; }
 .recommendation-card { background-color: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); overflow: hidden; }
 .recommendation-photo { width: 100%; height: 150px; background-color: #e9ecef; border: 4px solid #a9def9; box-sizing: border-box; }
@@ -201,7 +216,7 @@
 
 .re-recommend-text-group p {
   margin: 0 0 5px 15px; /* 텍스트 위치 조절 */
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #555;
 }
 
@@ -276,13 +291,13 @@
 
 .transport-button.active {
   font-weight: bold;
-  border-bottom: 2px solid #007bff;
-  color: #007bff;
+  border-bottom: 2px solid #D35400;
+  color: #D35400;
 }
 
 .route-inputs {
   position: relative;
-  border: 1px solid #007bff;
+  border: 1px solid #D35400;
   border-radius: 8px;
 }
 
@@ -328,7 +343,7 @@
 }
 
 .route-button.primary {
-  background-color: #007bff;
+  background-color: #D35400;
   color: white;
   border: none;
 }
@@ -417,7 +432,7 @@
 }
 
 .modal-button.primary {
-  background-color: #007bff;
+  background-color: #D35400;
   color: white;
   border: none;
 }
@@ -490,7 +505,7 @@
 }
 .review-author { margin: 0 0 5px 0; }
 .review-text { margin: 0 0 10px 0; color: #555; }
-.review-date { margin: 0; font-size: 0.8rem; color: #999; text-align: right; }
+.review-date { margin: 0; font-size: 1rem; color: #999; text-align: right; }
 
 /* --- 주소 항목 레이아웃 수정 --- */
 .address-item {

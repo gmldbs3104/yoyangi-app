@@ -13,7 +13,7 @@ function MyPage() {
   const [addressToEdit, setAddressToEdit] = useState(null);
   const [confirmAction, setConfirmAction] = useState(null);
   const navigate = useNavigate();
-
+  const userName = useAppStore((state) => state.userName)
   // 주소 추가/수정이 완료되었을 때 스토어 함수를 호출합니다.
   const handleAddressComplete = (newAddressData) => {
     if (addressToEdit) {
@@ -78,7 +78,7 @@ function MyPage() {
       <div className="mypage-content">
         <div className="profile-section">
           <div className="profile-icon-placeholder" />
-          <span className="profile-name">회원명</span>
+          <span className="profile-name">{userName}</span>
         </div>
 
         <div className="info-section">

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import '../App.css';
 import BottomNav from '../components/BottomNav.jsx';
 import yoyangiCharacter from '../assets/cheese_yoyangi.png'; // 캐릭터 이미지
+import useAppStore from '../store.js';
 
 // AI가 추천해준 시설에 대한 모의 데이터
 // 2. 여러 개의 추천 시설 모의 데이터를 만듭니다.
@@ -17,6 +18,7 @@ function Recommendation() {
   const navigate = useNavigate();
   const [recommendedFacility, setRecommendedFacility] = useState(mockRecommendedFacilities[0]);
   const [isLoading, setIsLoading] = useState(false);
+  const userName = useAppStore((state) => state.userName);
 
     // 4. '다시 추천받기' 버튼 클릭 시 실행될 함수 로직을 변경합니다.
   const handleReRecommend = () => {
@@ -40,7 +42,7 @@ function Recommendation() {
   return (
     <div className="recommendation-container">
       <div className="recommendation-content">
-        <h1 className="recommendation-title">요양이가 회원님에게<br />딱 맞는 곳을 찾았어요</h1>
+        <h1 className="recommendation-title">요양이가 {userName}님에게<br />딱 맞는 곳을 찾았어요</h1>
 
         {/* 5. 로딩 상태에 따라 다른 UI를 보여줍니다. */}
         {isLoading ? (

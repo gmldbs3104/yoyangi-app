@@ -2,13 +2,14 @@
 import React from 'react';
 import { useNavigate  } from 'react-router-dom';
 import '../App.css';
-import useWishlistStore from '../store'; // 1. store를 불러옵니다.
+import useAppStore from '../store'; // 1. store를 불러옵니다.
 import BottomNav from '../components/BottomNav.jsx';
 
 function Wishlist() {
   // 2. store에서 찜 목록 데이터를 가져옵니다.
-  const wishlist = useWishlistStore((state) => state.wishlist);
+  const wishlist = useAppStore((state) => state.wishlist);
   const navigate = useNavigate();
+  const userName = useAppStore((state) => state.userName);
 
   const handleItemClick = (facility) => {
     navigate(`/facility/${facility.id}`, { state: { facility: facility } });
@@ -16,11 +17,11 @@ function Wishlist() {
 
   return (
     <div className="wishlist-container">
-      <h1 className="wishlist-title">찜 목록</h1>
+      <h1 className="wishlist-title">저장 목록</h1>
       
       <div className="wishlist-content">
         {wishlist.length === 0 ? (
-          <p className="empty-wishlist-text">요양님이 저장한 곳들이에요</p>
+          <p className="empty-wishlist-text">{userName}님이 저장한 곳들이에요</p>
         ) : (
           wishlist.map(facility => (
             // 4. 각 아이템에 onClick 이벤트를 연결합니다.
