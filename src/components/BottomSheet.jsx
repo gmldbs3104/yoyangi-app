@@ -4,10 +4,14 @@ import { useNavigate } from 'react-router-dom'; // 1. useNavigate를 다시 불�
 import '../App.css';
 import useAppStore from '../store';
 import CallModal from './CallModal.jsx';
+import ImageViewerModal from './ImageViewerModal.jsx';
 
 function BottomSheet({ facility, onClose }) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isCallModalOpen, setIsCallModalOpen] = useState(false);
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
+  const [selectedImageUrl, setSelectedImageUrl] = useState('');
+
   const sheetRef = useRef(null);
   const touchStartY = useRef(0);
   const navigate = useNavigate(); // 2. navigate 함수를 준비합니다.
@@ -50,7 +54,16 @@ function BottomSheet({ facility, onClose }) {
 
   if (!facility) return null;
 
-  // '공유' 버튼을 눌렀을 때 실행될 이 함수를 추가하세요.
+  const handleImageClick = (imageUrl) => {
+    setSelectedImageUrl(imageUrl);
+    setIsImageModalOpen(true);
+  };
+
+  // 3. 모달 닫기 함수
+  const handleCloseImageModal = () => {
+    setIsImageModalOpen(false);
+  };
+
   const handleShare = async () => {
     const shareData = {
       title: `요양 시설 추천: ${facility.name}`,
@@ -106,7 +119,15 @@ function BottomSheet({ facility, onClose }) {
         <div ref={sheetRef} className="sheet-scrollable-content">
           <div className="sheet-content">
             <div className="photo-gallery">
-              {facility.photos.map((photo, index) => <div key={index} className="photo-placeholder" />)}
+              {facility.photos.map((photoUrl, index) => (
+                <img
+                  key={index}
+                  src={photoUrl} // 👈 photoUrl을 이미지 소스로 사용
+                  alt={`${facility.name} 사진 ${index + 1}`}
+                  className="photo-item" // 👈 클릭 가능한 이미지 스타일을 위한 클래스
+                  onClick={() => handleImageClick(photoUrl)} // 👈 클릭 시 해당 이미지 URL로 모달 열기
+                />
+              ))}
             </div>
             
             <div className="detail-section">
@@ -139,6 +160,12 @@ function BottomSheet({ facility, onClose }) {
         onClose={() => setIsCallModalOpen(false)} 
         phone={facility.phone} 
       />
+      {isImageModalOpen && (
+        <ImageViewerModal
+          imageUrl={selectedImageUrl}
+          onClose={handleCloseImageModal}
+        />
+      )}
     </>
   );
 }

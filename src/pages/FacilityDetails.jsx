@@ -6,11 +6,25 @@ import '../App.css';
 
 import useWishlistStore from '../store';
 import CallModal from '../components/CallModal';
+import ImageViewerModal from '../components/ImageViewerModal';
 
 function FacilityDetails() {
   const navigate = useNavigate();
   const location = useLocation();
   const facility = location.state?.facility;
+
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
+  const [selectedImageUrl, setSelectedImageUrl] = useState('');
+
+  const handleImageClick = (imageUrl) => {
+    setSelectedImageUrl(imageUrl);
+    setIsImageModalOpen(true);
+  };
+
+  // 3. 모달 닫기 함수
+  const handleCloseImageModal = () => {
+    setIsImageModalOpen(false);
+  };
 
   // 4. 전화 팝업의 열림/닫힘 상태를 관리합니다.
   const [isCallModalOpen, setIsCallModalOpen] = useState(false);
@@ -85,7 +99,15 @@ function FacilityDetails() {
         </div>
 
         <div className="photo-gallery">
-          {facility.photos.map((photo, index) => <div key={index} className="photo-placeholder" />)}
+          {facility.photos.map((photoUrl, index) => (
+            <img
+              key={index}
+              src={photoUrl} // 👈 photoUrl을 이미지 소스로 사용
+              alt={`${facility.name} 사진 ${index + 1}`}
+              className="photo-item" // 👈 클릭 가능한 이미지 스타일을 위한 클래스
+              onClick={() => handleImageClick(photoUrl)} // 👈 클릭 시 해당 이미지 URL로 모달 열기
+            />
+          ))}
         </div>
         
         <div className="detail-section">
@@ -135,6 +157,14 @@ function FacilityDetails() {
         onClose={() => setIsCallModalOpen(false)} 
         phone={facility.phone} 
       />
+
+      {isImageModalOpen && (
+        <ImageViewerModal
+          imageUrl={selectedImageUrl}
+          onClose={handleCloseImageModal}
+        />
+      )
+      }
     </div>
   );
 }
