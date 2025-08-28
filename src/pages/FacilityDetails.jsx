@@ -109,22 +109,6 @@ function FacilityDetails() {
           </div>
         </div>
 
-        {/* --- 아래 내용이 추가되었습니다 --- */}
-
-        <div className="detail-section">
-          <h3>실제 방문 후기</h3>
-          <div className="review-box">
-            <p className="review-author"><strong>김요양</strong> (보호자)</p>
-            <p className="review-text">"시설이 정말 깨끗하고 간호사분들이 친절하셔서 좋았어요. 아버지가 만족해하십니다."</p>
-            <p className="review-date">2024. 08. 15</p>
-          </div>
-          <div className="review-box">
-            <p className="review-author"><strong>박보호</strong> (자녀)</p>
-            <p className="review-text">"재활 프로그램이 체계적으로 잘 되어있어서 회복에 큰 도움이 되었습니다. 추천합니다."</p>
-            <p className="review-date">2024. 07. 21</p>
-          </div>
-        </div>
-
         <div className="detail-section">
           <h3>주요 프로그램</h3>
           <div className="info-box">

@@ -17,9 +17,9 @@ function Directions() {
   const [startPoint, setStartPoint] = useState('현재 위치');
   const [destinationPoint, setDestinationPoint] = useState(destinationName);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
   const [isLoading, setIsLoading] = useState(false);
-
+  const [transportMode, setTransportMode] = useState('transit'); // 'transit', 'car', 'walk', 'bike'
+  
   const handleStartPointSelect = (point) => {
     setStartPoint(point);
     setIsDropdownOpen(false); // 항목 선택 후 드롭다운 닫기
@@ -109,10 +109,30 @@ function Directions() {
       {/* 길찾기 UI */}
       <div className="directions-ui-wrapper">
         <div className="transport-options">
-          <button className="transport-button active">대중교통</button>
-          <button className="transport-button">자동차</button>
-          <button className="transport-button">도보</button>
-          <button className="transport-button">자전거</button>
+          <button 
+            className={`transport-button ${transportMode === 'transit' ? 'active' : ''}`}
+            onClick={() => setTransportMode('transit')}
+          >
+            대중교통
+          </button>
+          <button 
+            className={`transport-button ${transportMode === 'car' ? 'active' : ''}`}
+            onClick={() => setTransportMode('car')}
+          >
+            자동차
+          </button>
+          <button 
+            className={`transport-button ${transportMode === 'walk' ? 'active' : ''}`}
+            onClick={() => setTransportMode('walk')}
+          >
+            도보
+          </button>
+          <button 
+            className={`transport-button ${transportMode === 'bike' ? 'active' : ''}`}
+            onClick={() => setTransportMode('bike')}
+          >
+            자전거
+          </button>
         </div>
 
         <div className="route-inputs">

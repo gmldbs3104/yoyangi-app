@@ -19,6 +19,17 @@ function BottomSheet({ facility, onClose }) {
     navigate('/directions', { state: { destination: facility.name } });
   };
 
+  const handleAddToWishlist = () => {
+  const success = addToWishlist(facility); // store 함수는 이제 true/false를 반환합니다.
+
+  // 반환된 값에 따라 다른 alert를 보여줍니다.
+  if (success) {
+    alert(`${facility.name}을(를) 찜 목록에 추가했습니다.`);
+  } else {
+    alert('이미 찜한 시설입니다.');
+  }
+};
+
   const handleTouchStart = (e) => { touchStartY.current = e.targetTouches[0].clientY; };
   const handleTouchMove = (e) => {
     const touchCurrentY = e.targetTouches[0].clientY;
@@ -84,7 +95,7 @@ function BottomSheet({ facility, onClose }) {
             {/* 4. '도착' 버튼에 onClick 이벤트를 다시 연결합니다. */}
             <button onClick={handleGoToDirections}>도착</button>
             <button onClick={() => setIsCallModalOpen(true)}>전화</button>
-            <button onClick={() => addToWishlist(facility)}>저장</button>
+            <button onClick={handleAddToWishlist}>저장</button>
             <button onClick={handleShare}>공유</button>
           </div>
           <div className="facility-tags">
